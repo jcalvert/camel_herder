@@ -1,4 +1,10 @@
 CamelHerder::Application.routes.draw do
+  resources :flows
+
+  resources :endpoints
+
+  resources :routes
+
   resources :camel_contexts
 
   resources :servers

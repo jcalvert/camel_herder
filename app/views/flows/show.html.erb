@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>From:</b>
+  <%= @flow.from %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= @flow.to %>
+</p>
+
+<p>
+  <b>References:</b>
+  <%= @flow.references %>
+</p>
+
+
+<%= link_to 'Edit', edit_flow_path(@flow) %> |
+<%= link_to 'Back', flows_path %>
