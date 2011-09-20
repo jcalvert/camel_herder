@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @camel_context.name %>
+</p>
+
+<p>
+  <b>Context name:</b>
+  <%= @camel_context.context_name %>
+</p>
+
+<p>
+  <b>Server:</b>
+  <%= @camel_context.server %>
+</p>
+
+
+<%= link_to 'Edit', edit_camel_context_path(@camel_context) %> |
+<%= link_to 'Back', camel_contexts_path %>

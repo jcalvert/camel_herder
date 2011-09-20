@@ -1,0 +1,27 @@
+<h1>Listing camel_contexts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Context name</th>
+    <th>Server</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @camel_contexts.each do |camel_context| %>
+  <tr>
+    <td><%= camel_context.name %></td>
+    <td><%= camel_context.context_name %></td>
+    <td><%= camel_context.server %></td>
+    <td><%= link_to 'Show', camel_context %></td>
+    <td><%= link_to 'Edit', edit_camel_context_path(camel_context) %></td>
+    <td><%= link_to 'Destroy', camel_context, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Camel context', new_camel_context_path %>

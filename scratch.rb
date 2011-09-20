@@ -42,6 +42,8 @@ camel_mbeans.inject(@camel_routes) do |routes,mbean|
   matchdata=mbean.to_s.match /org.apache.camel:context=(.*?),type=routes,name="(.*?)"/
   if matchdata
     routes[matchdata[1]][matchdata[2]] = route_attributes(mbean)
+
+#    doc.root.elements
   end
   routes
 end

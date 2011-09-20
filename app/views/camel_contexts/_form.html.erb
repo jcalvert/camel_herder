@@ -1,0 +1,29 @@
+<%= form_for(@camel_context) do |f| %>
+  <% if @camel_context.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@camel_context.errors.count, "error") %> prohibited this camel_context from being saved:</h2>
+
+      <ul>
+      <% @camel_context.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :context_name %><br />
+    <%= f.text_field :context_name %>
+  </div>
+  <div class="field">
+    <%= f.label :server %><br />
+    <%= f.text_field :server %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
