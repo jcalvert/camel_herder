@@ -1,6 +1,7 @@
 java_import javax.management.remote.JMXConnector
 java_import javax.management.remote.JMXConnectorFactory
 java_import javax.management.remote.JMXServiceURL
+java_import javax.management.JMX
 java_import javax.management.ObjectName
 
 class Server < ActiveRecord::Base
@@ -27,7 +28,14 @@ class Server < ActiveRecord::Base
     camel_mbeans = jmx_connection.query_names(nil, nil).select{|m| m.domain == 'org.apache.camel'}
     camel_mbeans.select{|m| m.to_s =~ /type=context/}.each do |m|
       matchdata=m.to_s.match /org.apache.camel:context=(.*?),type=context,name="(.*?)"/
-      camel_contexts << CamelContext.new(:context_name => matchdata[1], :name => matchdata[2])
+      context = CamelContext.new(:context_name => matchdata[1], :name => matchdata[2])
+      camel_contexts << context
+      camel_mbeans.select{|m| m.to_s =~ /org.apache.camel:context=#{Regexp.quote(context.context_name)},type=routes,name="(.*?)"/}.
+        each do |m|
+          routename=m.to_s.match(/name="(.*?)"/)[1]
+#          mbeanProxy = JMX.newMBeanProxy(jmx_connection, m, java.lang.Object.class);
+          context.routes << Route.new(:name => routename, :object_name => m.to_s)
+      end
     end
   end
   

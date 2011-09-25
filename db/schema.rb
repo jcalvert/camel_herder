@@ -10,12 +10,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920021132) do
+ActiveRecord::Schema.define(:version => 20110920121022) do
 
   create_table "camel_contexts", :force => true do |t|
     t.string   "name"
+    t.string   "object_name"
     t.string   "context_name"
     t.integer  "server_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "endpoints", :force => true do |t|
+    t.string   "uri"
+    t.string   "object_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "flows", :force => true do |t|
+    t.integer  "from"
+    t.integer  "to"
+    t.integer  "route_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "routes", :force => true do |t|
+    t.string   "name"
+    t.string   "object_name"
+    t.text     "xml"
+    t.integer  "camel_context_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

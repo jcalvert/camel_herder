@@ -2,8 +2,9 @@ class CreateRoutes < ActiveRecord::Migration
   def self.up
     create_table :routes do |t|
       t.string :name
+      t.string :object_name      
       t.text :xml
-      t.camel_context :references
+      t.references :camel_context
 
       t.timestamps
     end

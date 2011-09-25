@@ -1,9 +1,9 @@
 class CreateFlows < ActiveRecord::Migration
   def self.up
     create_table :flows do |t|
-      t.int :from
-      t.int :to
-      t.route :references
+      t.integer :from
+      t.integer :to
+      t.references :route
 
       t.timestamps
     end

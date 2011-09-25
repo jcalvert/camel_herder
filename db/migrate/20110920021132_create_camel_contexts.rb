@@ -2,6 +2,7 @@ class CreateCamelContexts < ActiveRecord::Migration
   def self.up
     create_table :camel_contexts do |t|
       t.string :name
+      t.string :object_name
       t.string :context_name
       t.references :server
 
